@@ -1,14 +1,15 @@
 {
-  "name": "animatedroutes",
+  "name": "react-redux-2048",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "animated": "^0.2.2",
+    "classnames": "^2.2.6",
+    "immutable": "^3.8.2",
+    "prop-types": "^15.6.1",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
-    "react-router-dom": "^4.3.1",
-    "react-scripts": "1.1.4",
-    "react-transition-group": "^2.3.1"
+    "react-redux": "^5.0.7",
+    "react-scripts": "1.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
