@@ -8,18 +8,18 @@ const GradeItem = ({onChose, onRemove, chose, grade }) => {
         +parseFloat(grade.english)
         +parseFloat(grade.physic);
     return (
-        <li className="Grade-item"
+        <li className="grade-item"
             style={{
                 textDecoration: chose ? 'line-through' : 'none'
             }}>
-            <input className="toggle" type="checkbox" {...checkedProp} readOnly onClick={onChose} />
-            <label className="text">{grade.name}-</label>
-            <label className="text">{grade.chinese}-</label>
-            <label className="text">{grade.math}-</label>
-            <label className="text">{grade.english}-</label>
-            <label className="text">{grade.physic}-</label>
-            <label className="text">{sum}</label>
-            <button className="remove" onClick={onRemove}>×</button>
+            <input className="chose item" type="checkbox" {...checkedProp} readOnly onClick={onChose} />
+            <label className="text item">{grade.name}</label>
+            <label className="text item">{grade.chinese}</label>
+            <label className="text item">{grade.math}</label>
+            <label className="text item">{grade.english}</label>
+            <label className="text item">{grade.physic}</label>
+            <label className="text item">{sum}</label>
+            <button className="remove item" onClick={onRemove}>×</button>
         </li>
     );
 };

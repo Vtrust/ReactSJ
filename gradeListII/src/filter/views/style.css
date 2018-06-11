@@ -1,5 +1,7 @@
 .filters {
     font-size: 20px;
+    width: 1200px;
+    margin: 20px auto;
 }
 
 .filters .filter {

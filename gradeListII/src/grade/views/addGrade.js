@@ -77,10 +77,15 @@ class AddGrade extends Component {
         return (
             <div className="add-grade">
                 <form onSubmit={this.onSubmit}>
+                    <label>姓名</label>
                     <input className="new-grade" name={"name"} onChange={this.onInputChange} value={this.state.name} />
+                    <label>语文</label>
                     <input className="new-grade" name={"chinese"} onChange={this.onInputChange} value={this.state.chinese} />
+                    <label>数学</label>
                     <input className="new-grade" name={"math"} onChange={this.onInputChange} value={this.state.math} />
+                    <label>英语</label>
                     <input className="new-grade" name={"english"} onChange={this.onInputChange} value={this.state.english} />
+                    <label>物理</label>
                     <input className="new-grade" name={"physic"} onChange={this.onInputChange} value={this.state.physic} />
                     <button className="add-btn" type="submit">
                         添加
