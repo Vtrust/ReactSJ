@@ -8,7 +8,8 @@ export function generateTiles(height, width) {
                 id:null,
                 x:null,
                 y:null,
-                value:null
+                value:null,
+                merge:true
             }
           
             tiles[i][j]= tile;
@@ -23,8 +24,18 @@ export const tile=()=>{
         id:null,
         x:null,
         y:null,
-        value:null
+        value:null,
+        merge:true
     }
+}
+
+export const resetMerge = (tiles) =>{
+    for(let i=0;i<tiles.length;i++){
+        for(let j=0;j<tiles[i].length;j++){
+            tiles[i][j].merge = true;
+        }
+    }
+    return tiles;
 }
 
 
@@ -34,6 +45,14 @@ export const noBlockHorizantal=(row, col1, col2, cells)=>{
     }
     return true;
 }
+
+export const noBlockVertical=(col, row1, row2, cells)=>{
+    for(let i=row1+1;i<row2;i++){
+        if(cells[i][col].value!==null) return false;
+    }
+    return true;
+}
+
 
 export const newArrayTiles = (tiles) => {
     let newTiles = [];

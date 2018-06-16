@@ -7,4 +7,38 @@ body {
   font-family: "Helvetica Neue", Arial, sans-serif;
   font-size: 14px;
   -webkit-tap-highlight-color: transparent;
+  overflow: hidden;
+}
+
+.TopBar{
+  height: 10vh;
+  width: 100%;
+  display: flex;
+  align-items:center;
+  flex-flow: row nowrap;
+  background: #bbada0;
+
+}
+
+.TopBar a{
+  color: white;
+  margin-left: 20px;
+  text-decoration: none;
+  font-size: 3vh;
+}
+
+.Score{
+  height: 90vh;
+  margin: 0;
+}
+
+@media screen and (max-width: 500px) {
+
+  .TopBar{
+    height: 10vh;
+  }
+  
+  .TopBar a{
+    font-size: 4vh;
+  }
 }

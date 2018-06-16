@@ -1,11 +1,11 @@
 .game-board{
     user-select: none;
     width: 490px;
-    padding: 20px;
+    padding: 10px;
     box-sizing: border-box;
     margin: 0 auto;
-    height: 100vh;
-  }
+    height: 90vh;
+}
   
 .game-box{
     width: 450px;
@@ -36,4 +36,35 @@
     color: #695d51;
     line-height: 1.8em
 }
-  
+
+
+@media screen and (max-width: 500px) {
+    .game-board{
+        width: 98vw;
+        padding: 2vw;
+ 
+    }
+
+    .game-box{
+        width: 90vw;
+        height: 90vw;
+        padding: 2vw;
+        border-radius: 1vw;
+        margin: 0 auto;
+    }
+
+    .grid-container{
+        width: 86vw;
+        height: 86vw;
+    }
+    .grid-tiles{
+        width: 20vw;
+        height: 20vw;
+        border-radius: 1vw;
+    }
+      
+    .view-score-link{
+        color: #695d51;
+        line-height: 1.8em
+    }
+}

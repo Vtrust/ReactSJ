@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 
 import Tiles from '../tiles/tiles';
 import GameOver from '../gameOver/gameOver';
+import HeaderBox from '../headerBox/headerBox';
 
 
 import './gameBoard.css';
@@ -31,12 +32,12 @@ BackgroundGrids.propTypes = {
 
 const GameBoard = (props) => (
     <div className="game-board">
-      {/* <HeaderBox /> */}
+      <HeaderBox/>
       {/* <button onClick={props.startNewGame}/> */}
       <div className="game-box">
         <BackgroundGrids size={props.size}/>
         <Tiles/>
-        {props.gameStatu && <GameOver />}
+        {props.gameState && <GameOver />}
       </div>
     </div>
 );
@@ -54,10 +55,10 @@ const mapDispatchToProps = (dispatch) => {
 
 
 const mapStateToProps = state => {
-    console.log(state);
     return {
+        score: state.game.score,
         size: state.game.size,
-        gameState: state.game.gameState === 'play'
+        gameState: state.game.gameState === 'over'
     };
 };
 

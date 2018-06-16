@@ -88,26 +88,58 @@
     box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0.55556), inset 0 0 0 1px rgba(255, 255, 255, 0.33333);
     font-size: 36px;
   }
+
   
-  
-  @keyframes a-tile-new{
-    from{
-      transform: scale(0);
+  .fade-enter {
+    opacity: 0.01;
+  }
+  .fade-enter-active {
+    opacity: 1;
+    transition: opacity 500ms ease-in;
+  }
+  .fade-exit {
+    opacity: 1;
+  }
+  .fade-exit-active {
+    opacity: 0.01;
+    transition: opacity 100ms ease-in;
+  }
+
+  @media screen and (max-width: 500px) {
+    .tile{
+      width: 20vw;
+      height: 20vw;
+      line-height: 20vw;
+      font-size: 10vw;
     }
-    to{
-      transform: scale(1);
+    .tile-inner{
+      border-radius: 1vw;
+    }
+
+    .tile-container{
+      position: absolute;
+      left: 2vw;
+      top: 2vw;
+      right: 2vw;
+      bottom: 2vw;
+    }
+    .tile-128 .tile-inner {
+      font-size: 10vw;
+    }
+    
+    .tile-256 .tile-inner {
+      font-size: 10vw;
+    }
+    
+    .tile-512 .tile-inner {
+      font-size: 10vw;
+    }
+    
+    .tile-1024 .tile-inner {
+      font-size: 9vw;
+    }
+    
+    .tile-2048 .tile-inner {
+      font-size: 9vw;
     }
   }
-  
-  @keyframes a-tile-merged{
-    from{
-      transform: scale(0);
-    }
-    96%{
-      transform: scale(1.16);
-    }
-    to{
-      transform: scale(1);
-    }
-  }
-  
