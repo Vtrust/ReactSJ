@@ -1,0 +1,106 @@
+.grade {
+    margin: 20px auto;
+    width: 1200px;
+    font-size: 30px;
+}
+
+.add-grade {
+    position: relative;
+}
+.add-grade label{
+    margin: 0 10px 0 30px;
+}
+
+.add-grade .new-grade {
+    width: 100px;
+    font-size: 30px;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+}
+
+.add-grade .add-btn {
+    font-size: 20px;
+    margin-left: 20px;
+    width: 80px;
+    padding:8px;
+    background-color: #428bca;
+    color: #fff;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px; /* future proofing */
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid transparent;
+    outline:none;
+}
+
+.grade-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 30px;
+}
+
+.title {
+    width: 100%;
+    border-bottom: solid 2px #eeeeee;
+}
+
+.title label{
+    display: inline-block;
+    width: 100px;
+    margin: 20px 20px 10px 20px;
+    font-size: 20px;
+}
+
+
+.grade-item {
+    position: relative;
+    height: 60px;
+    line-height: 50px;
+    vertical-align: middle;
+}
+
+.grade-item .chose {
+    height: 40px;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.grade-item .chose:after {
+    margin: 10px 0 0 0;
+    content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#ededed" stroke-width="3"/></svg>');
+}
+
+.grade-item .chose:checked:after {
+    content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#bddad5" stroke-width="3"/><path fill="#5dc2af" d="M72 25L42 71 27 56l-4 4 20 20 34-52z"/></svg>');
+}
+
+.grade-item .text {
+    font-size: 20px;
+}
+.grade-item .item {
+    display: inline-block;
+    width: 100px;
+    margin: 0 20px;
+}
+
+.grade-item .remove {
+    border: 0;
+    background: 0;
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
+    color: #cc9a9a;
+    margin-bottom: 11px;
+    transition: color 0.2s ease-out;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.grade-item .remove:hover {
+    color: #af5b5e;
+}
+
+

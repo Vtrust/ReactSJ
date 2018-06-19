@@ -1,19 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import { startNewGame } from '../actions';
 import { connect } from 'react-redux';
-import './GameOver.css';
+import {newGame} from '../../actions/actions';
+import './gameOver.css';
 
 
 let GameOver = ({dispatch}) => {
   return <div className="game-over">
     <h1 className="title">Game Over!</h1>
-    <button>Try Again</button>
+    <button  onClick={() => dispatch(newGame())}>Try Again</button>
   </div>;
 };
 
+
 GameOver.propTypes = {
-  dispatch: PropTypes.func.isRequired
+    dispatch: PropTypes.func.isRequired
 };
 
 export default connect()(GameOver);

@@ -1,92 +1,102 @@
 import React, { Component } from 'react';
-import GameBoard from '../GameBoard/GameBoard';
+import GameBoard from '../gameBoard/gameBoard';
 import { connect } from 'react-redux';
-import * as suport from '../../utils/suport';
-import * as actions from '../../actions';
+import {newGame,moveTiles,newDocumentWidth} from '../../actions/actions';
 
-// import PropTypes from 'prop-types';
+let startx = 0;
+let starty = 0;
+let endx = 0;
+let endy = 0;
+
+
 
 class Game extends Component {
-    render () {
-        return  <GameBoard />
-    }
-
 
     componentDidMount () {
-        this.props.startNewGame();
         this.handleKeyPress = this.handleKeyPress.bind(this);
-        // this.handleSwiped = this.handleSwiped.bind(this);
+        this.touchstart = this.touchstart.bind(this);
+        this.touchend = this.touchend.bind(this);
+        this.getSize = this.getSize.bind(this);
         window.addEventListener('keydown', this.handleKeyPress);
+        window.addEventListener('touchstart',this.touchstart);
+        window.addEventListener('touchend',this.touchend);
+        window.addEventListener('resize',this.getSize);
     }
 
-    componentWillUnmount () {
-        window.removeEventListener('keydown', this.handleKeyPress);
+    getSize(){
+        this.props.DocumentWidth(window.screen.availWidth);
     }
 
     //键盘监听
     handleKeyPress (ev) {
- 
         let { key } = ev;
-        //console.log("helll",key);
-        // if (!this.props.gameStarted) return;
         let match = key.toLowerCase().match(/arrow(up|right|down|left)/);
-        console.log("match",match);
-    
         if (match) {
-            console.log("ok");
-          this.move(match[1]);
-          ev.preventDefault();
+            console.log("handleKeyPress",match[1]);
+            this.props.MoveTiles(match[1]);
+            ev.preventDefault();
         }
     }
 
-    move (opt) {
-       
-        let {cells} = this.props
-        if(this.canMove(opt,cells)){
-            this.props.moveBoard(opt);
-        }
-       
+    //触摸监听
+    touchstart (ev) {
+        ev.preventDefault();
+        startx = ev.touches[0].pageX;
+        starty = ev.touches[0].pageY;
+        console.log(startx,starty);
     }
 
-    canMove (opt,cells){
-        let canMove = false
-        switch(opt){
-            case 'left':
-            if(suport.canMoveLeft(cells)){
-                canMove = true;
+    touchend (ev) {
+        console.log("touchend");
+        endx = ev.changedTouches[0].pageX;
+        endy = ev.changedTouches[0].pageY;
+        console.log(endx,endy);
+        //控制逻辑
+       let delx=endx-startx;
+       let dely=endy-starty;
+      
+       if(Math.abs(delx)<0.2*window.screen.availWidth&&Math.abs(dely)<0.2*window.screen.availWidth){
+        console.log("return",window.screen.availWidth,delx,dely);
+           return;
+       }
+
+        if(Math.abs(delx)>=Math.abs(dely)){
+            //x            
+            if(delx>0){
+                //move right
+                this.props.MoveTiles('right');
+            }else{
+                //move left
+                this.props.MoveTiles('left');
             }
-            break;
-            default:
-            canMove = false;
+        }else{
+            //y
+            if(dely>0){
+                //move down
+                this.props.MoveTiles('down');
+            }else{
+                //move up
+                this.props.MoveTiles('up');
+            }
+
         }
-
-        return canMove;
     }
-    
+
+    render () {
+        return  <GameBoard />
+    }
 }
-
-
-
-
-
-const mapStateToProps = (state) => {
-    return {
-        size: state.size,
-    //   tiles: state.tiles,
-    //   score: state.scores.score,
-        cells:state.cells,
-        gameStarted: state.gameStatus === 'playing'
-    };
+const mapStateToProps = state => {
+  return {
+    DocumentWidth:state.game.documentWidth
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-      startNewGame: () => dispatch(actions.startNewGame()),
-    //   setGameOver: () => dispatch(actions.setGameOver()),
-    //   generateNewTile: () => dispatch(actions.generateNewTile()),
-      moveBoard: opt => dispatch(actions.moveBoard(opt)),
-    //   addScore: score => dispatch(actions.addScore(score)),
-    //   updateBestScore: score => dispatch(actions.updateBestScore(score))
+        NewGame: () => dispatch(newGame()),
+        MoveTiles: direction => dispatch(moveTiles(direction)),
+        DocumentWidth: documentWidth => dispatch(newDocumentWidth(documentWidth))
     };
 };
 

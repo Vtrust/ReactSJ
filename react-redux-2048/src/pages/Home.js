@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Game from "../components/Game/Game.js";
+import Game from "../components/game/game";
 
 export default class Home extends Component {
     render() {

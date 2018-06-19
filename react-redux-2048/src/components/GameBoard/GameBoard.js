@@ -3,20 +3,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
-import * as actions from '../../actions';
+import Tiles from '../tiles/tiles';
+import GameOver from '../gameOver/gameOver';
+import HeaderBox from '../headerBox/headerBox';
 
-import GameCells from '../GameCells/GameCells';
-import GameOver from '../GameOver/GameOver';
 
-
-import './GameBoard.css';
+import './gameBoard.css';
 
 
 const BackgroundGrids =  ({size}) => {
     console.log("size",size);
     let row = i => {
         return new Array(size).fill().map((_, j) =>
-          <div className="grid-cell" key={`grid-cell-${i * size + j}`}></div>
+          <div className="grid-tiles" key={`grid-tiles-${i * size + j}`}></div>
         );
       };
     let grids = new Array(size).fill().map((_, i) => row(i));
@@ -33,31 +32,33 @@ BackgroundGrids.propTypes = {
 
 const GameBoard = (props) => (
     <div className="game-board">
-      {/* <HeaderBox /> */}
-      <button onClick={props.startNewGame}/>
+      <HeaderBox/>
+      {/* <button onClick={props.startNewGame}/> */}
       <div className="game-box">
         <BackgroundGrids size={props.size}/>
-        <GameCells/>
-        {props.gameOver && <GameOver />}
+        <Tiles/>
+        {props.gameState && <GameOver />}
       </div>
     </div>
 );
 
 GameBoard.propTypes = {
     size: PropTypes.number.isRequired,
-    gameOver: PropTypes.bool.isRequired
+    gameState: PropTypes.bool.isRequired
 };
+
 const mapDispatchToProps = (dispatch) => {
     return {
-      startNewGame: () => dispatch(actions.add()),
+    
     };
 };
 
 
 const mapStateToProps = state => {
     return {
-        size: state.size,
-        gameOver: state.gameStatus === 'over1'
+        score: state.game.score,
+        size: state.game.size,
+        gameState: state.game.gameState === 'over'
     };
 };
 
